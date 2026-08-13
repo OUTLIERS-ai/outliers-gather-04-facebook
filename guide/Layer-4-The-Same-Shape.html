@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8"><title>Layer 4 &middot; The Same Shape</title><style>
+  @page { size: A4; margin: 0; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root { --paper:#F3EEE3; --vellum:#E7DEC9; --ink:#14110C; --ox:#6E1A18; --brass:#B08A3E; }
+  body { font-family: Constantia, Georgia, serif; color:var(--ink); background:var(--paper); }
+  .page { width:210mm; height:296mm; padding:20mm 22mm; background:var(--paper);
+          page-break-after:always; position:relative; overflow:hidden; }
+  .page:last-child { page-break-after:auto; }
+  .mono { font-family: Consolas,"Courier New",monospace; letter-spacing:.16em; text-transform:uppercase; }
+  .label { font-size:8.5pt; color:var(--brass); margin-bottom:3mm; }
+  h1 { font-size:34pt; font-weight:bold; line-height:1.1; }
+  h2 { font-size:19pt; font-weight:bold; margin-bottom:3mm; line-height:1.18; }
+  h3 { font-family:Consolas,monospace; font-size:8pt; letter-spacing:.16em; text-transform:uppercase;
+       color:var(--brass); margin:6mm 0 1.5mm 0; }
+  .deck { font-size:11pt; line-height:1.45; color:var(--ox); margin-bottom:5mm; }
+  p { font-size:10.5pt; line-height:1.5; margin-bottom:3mm; }
+  li { font-size:10.5pt; line-height:1.5; margin-bottom:1.5mm; margin-left:5mm; }
+  figure { margin:5mm 0; }
+  .cap { font-family:Consolas,monospace; font-size:7pt; letter-spacing:.1em; text-transform:uppercase;
+         color:var(--brass); text-align:center; margin-top:2mm; }
+  .box { border-left:2mm solid var(--ox); background:var(--vellum); padding:3.5mm 4.5mm; margin-top:5mm; }
+  .box .mono { font-size:7.5pt; color:var(--ox); display:block; margin-bottom:1.2mm; }
+  .box p { margin:0; }
+  .cmd { font-family:Consolas,monospace; font-size:9.5pt; background:var(--ink); color:var(--paper);
+         padding:3mm 4mm; margin:3mm 0; line-height:1.6; }
+  /* A printed URL must never wrap. A line broken on a hyphen inside a slug copies out
+     as a different address that still looks right -- the 2026-08-06 fault. */
+  .url { white-space:nowrap; }
+  .footer { position:absolute; bottom:10mm; left:22mm; right:22mm; display:flex;
+            justify-content:space-between; font-size:7pt; color:var(--brass); }
+  .pgno { font-family:Consolas,monospace; font-size:7pt; letter-spacing:.1em; color:var(--brass); }
+  .pos { position:absolute; top:19mm; right:22mm; width:48mm; }
+  .rule { border:none; border-top:.3mm solid var(--ink); opacity:.25; margin:5mm 0; }
+  .cover { display:flex; flex-direction:column; justify-content:space-between; text-align:center; padding-top:44mm; }
+  .cover .word { font-size:24pt; font-weight:bold; letter-spacing:.3em; margin-top:9mm; }
+  .cover h1 { margin-top:14mm; }
+  .cover .sub { font-size:12pt; color:var(--ox); margin-top:5mm; line-height:1.5; }
+  table { width:100%; border-collapse:collapse; margin-top:3mm; }
+  th { font-family:Consolas,monospace; font-size:7.5pt; letter-spacing:.14em; text-transform:uppercase;
+       color:var(--brass); text-align:left; padding:1.8mm 2mm; border-bottom:.4mm solid var(--ink); }
+  /* Table padding is load-bearing on page 5, which carries the glossary and is the longest
+     page in every guide. The page is a fixed 296mm with overflow:hidden -- content past the
+     bottom is DELETED, not reflowed. Re-run check_guide_overflow.py after touching this. */
+  td { font-size:9.5pt; line-height:1.36; padding:1.7mm 2mm; border-bottom:.2mm solid rgba(20,17,12,.2); vertical-align:top; }
+  td.k { width:38mm; font-weight:bold; }
+  text { font-family:Consolas,"Courier New",monospace; }
+  .t  { font-size:9.2px; letter-spacing:.05em; fill:#14110C; }
+  .tb { font-size:9.2px; letter-spacing:.12em; fill:#B08A3E; }
+  .tx { font-size:9.2px; letter-spacing:.05em; fill:#6E1A18; }
+  .ts { font-size:8px;   letter-spacing:.05em; fill:#14110C; opacity:.8; }
+  .tw { font-size:9.2px; letter-spacing:.05em; fill:#F3EEE3; }
+  .tsw{ font-size:8px;   letter-spacing:.05em; fill:#F3EEE3; }
+  .tsb{ font-size:8px;   letter-spacing:.12em; fill:#B08A3E; }
+</style></head><body><div class="page cover"><div><svg width="132" height="132" viewBox="0 0 200 200" style="display:block;margin:0 auto"><circle cx="100" cy="100" r="90" fill="none" stroke="#14110C" stroke-width="3.15"/><circle cx="100" cy="100" r="50.4" fill="none" stroke="#14110C" stroke-width="18"/><circle cx="162.51" cy="35.26" r="10.35" fill="#6E1A18"/></svg><div class="word mono">Outliers</div><h1>The Same Shape,<br>Somewhere Else</h1><div class="sub">Layer 4 of 5 &nbsp;&middot;&nbsp; The first two layers again,<br>on a different platform.</div></div><div style="margin-bottom:15mm"><div class="mono" style="font-size:8.5pt;color:#B08A3E">Est. MMXXVI &nbsp;&middot;&nbsp; Outliers Accelerator</div></div></div><div class="page"><div class="label mono">Layer 4 &middot; The Same Shape</div><div class="pos"><svg viewBox="0 0 152 20" width="100%"><rect x="0" y="0" width="26" height="7" fill="#C9BCA0" stroke="#14110C" stroke-width="0.4"/><rect x="30" y="0" width="26" height="7" fill="#C9BCA0" stroke="#14110C" stroke-width="0.4"/><rect x="60" y="0" width="26" height="7" fill="#C9BCA0" stroke="#14110C" stroke-width="0.4"/><rect x="90" y="0" width="26" height="7" fill="#14110C" stroke="#14110C" stroke-width="0.4"/><rect x="120" y="0" width="26" height="7" fill="#E7DEC9" stroke="#14110C" stroke-width="0.4"/><text x="0" y="17" style="font-size:6px;letter-spacing:.14em;fill:#B08A3E">LAYER 4</text></svg></div><h2>Proof, rather than an assurance</h2><div class="deck">The claim so far has been that the shape moves. This layer is that claim demonstrated: the same foundation and the same basics, built for a second platform, handed to you to read side by side with the first.</div><h3>What the last layer left you with</h3><p>You know how the first two layers were built, and you have proved one page on a site of your own. Doing all of it again from nothing, for a second platform, still sounds like a great deal of work, and nothing so far has shown you the shape genuinely survives the move.</p><h3>What this layer builds</h3><p>A working Facebook engine, with the same parts under different words: the same governor, the same one browser, the same sign-in that waits for you, the same read before anything acts.</p><p>It arrives with its search terms empty. That is deliberate. Which groups your people are actually in is the one question nobody can answer for you, and an empty list is the only way to stop you skipping it.</p><figure><svg viewBox="0 0 560 190" width="100%"><defs><marker id="a4" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#6E1A18"/></marker></defs>
+      <text class="tb" x="16" y="14">THE SAME PARTS, DIFFERENT WORDS</text>
+      <text class="tb" x="16" y="34">ONE PLATFORM</text>
+      <text class="tb" x="330" y="34">ANOTHER</text>
+      <g fill="#E7DEC9" stroke="#14110C" stroke-width="0.8">
+        <rect x="16" y="42" width="196" height="20"/><rect x="16" y="66" width="196" height="20"/>
+        <rect x="16" y="90" width="196" height="20"/><rect x="16" y="114" width="196" height="20"/>
+        <rect x="330" y="42" width="214" height="20"/><rect x="330" y="66" width="214" height="20"/>
+        <rect x="330" y="90" width="214" height="20"/><rect x="330" y="114" width="214" height="20"/>
+      </g>
+      <text class="ts" x="24" y="56">the doorman, six checks</text>
+      <text class="ts" x="24" y="80">one browser, its own profile</text>
+      <text class="ts" x="24" y="104">sign in once, by hand</text>
+      <text class="ts" x="24" y="128">read the page, write nothing</text>
+      <text class="ts" x="338" y="56">the doorman, six checks</text>
+      <text class="ts" x="338" y="80">one browser, its own profile</text>
+      <text class="ts" x="338" y="104">sign in once, by hand</text>
+      <text class="ts" x="338" y="128">read the page, write nothing</text>
+      <g stroke="#6E1A18" stroke-width="1.1" fill="none" marker-end="url(#a4)">
+        <path d="M216 52 L326 52"/><path d="M216 76 L326 76"/>
+        <path d="M216 100 L326 100"/><path d="M216 124 L326 124"/>
+      </g>
+      <text class="tx" x="16" y="158">What actually changed: the words it searches for, and how many it may do in a day.</text>
+      <text class="ts" x="16" y="176">Five joins a day is the lowest limit anywhere in this set. Losing that account loses every group with it.</text>
+    </svg><div class="cap">Two platforms. One shape. The difference is a list of words.</div></figure><div class="footer"><span class="mono">Layer 4 &middot; The Same Shape</span><span class="pgno">2</span><span class="mono">Outliers</span></div></div><div class="page"><div class="label mono">Layer 4 &middot; How it works</div><h2>How it works</h2><div class="deck">What moved across unchanged, what had to change, and the one number that is not the same.</div>
+      <h3>What moved across without being touched</h3>
+      <p>The governor, the one browser on its own profile, the sign-in that waits for you with no
+      time limit, the human pace, and the rule that a job reads before it acts. Those are not
+      about any particular website. They are about acting through a browser on an account you
+      cannot replace, which is the same problem everywhere.</p>
+      <h3>What actually had to change</h3>
+      <p>The words it searches for, and the shape of the pages it reads. That is the whole of it.
+      A second engine is not a second system; it is the same system with a different list of terms
+      and a different set of page descriptions.</p>
+      <h3>The number that is deliberately not the same</h3>
+      <p>Joining groups is capped at five a day, the lowest limit anywhere in this set, and the
+      reason is worth stating rather than leaving to be inferred: on that platform, losing the
+      account loses every group you were in with it. The limit is set by the size of the mistake,
+      not by how much work you want done. That is the rule, and it is why every platform needs its
+      own answer to the fourth question rather than a number copied across.</p>
+      <h3>The other kind of platform, which people miss</h3>
+      <p>Not every site needs your account. Some can be read while signed out entirely, which means
+      a fresh empty browser session that keeps nothing, no sign-in, and almost no risk. If the
+      answer to "can I see it without signing in" is yes, you are in a much easier situation than
+      this guide describes, and it is worth checking before assuming otherwise.</p>
+      <h3>And the honest part</h3>
+      <p>This engine's design is proven: the original it came from has run against the platform for
+      real, and joined real groups under these limits. <strong>This generalised copy has not.</strong>
+      The order to prove it in is written into its own instructions, and running that order is the
+      first job rather than an optional check.</p><div class="footer"><span class="mono">Layer 4 &middot; The Same Shape</span><span class="pgno">3</span><span class="mono">Outliers</span></div></div><div class="page"><div class="label mono">Layer 4 &middot; Build it</div><h2>Build it</h2><div class="deck">One command. It asks you a few questions so what you get is yours, then does the work.</div><div class="cmd"><span class="url">git clone https://github.com/OUTLIERS-ai/outliers-gather-04-facebook</span><br>cd outliers-gather-04-facebook<br>python install.py</div><p>This stands on its own and does not need the other layers, though it expects the same records system underneath. Nothing reaches the outside world during installation.</p><h3>What it asks you, and why</h3><table><tr><th style="width:52mm">Question</th><th>What it changes</th></tr><tr><td class="k">What hours do you work?</td><td>Nothing runs outside them, the same as every other layer.</td></tr><tr><td class="k">Which days?</td><td>The days it may do anything at all.</td></tr><tr><td class="k">How many pages a day, at most?</td><td>Reading has its own ceiling, separate from acting.</td></tr><tr><td class="k">How many groups a day may it ask to join?</td><td>Five is the default and the lowest number anywhere in this set. It will accept less and refuse more, and tell you why.</td></tr><tr><td class="k">Which words should it search for?</td><td>Left empty on purpose. Which groups your people are actually in is the question this layer exists to make you answer.</td></tr><tr><td class="k">Where should your Facebook login be kept?</td><td>Its own folder, separate from the other one. One profile per platform, never shared, and never the browser you use yourself.</td></tr></table><h3>What you end up with</h3><ul><li>A second engine with the same foundation and the same basics, on another platform.</li><li>Empty term lists waiting for your answer.</li><li>The exact order to prove it in, before you trust any of it.</li></ul><div class="footer"><span class="mono">Layer 4 &middot; The Same Shape</span><span class="pgno">4</span><span class="mono">Outliers</span></div></div><div class="page"><div class="label mono">Layer 4 &middot; Finishing</div><h2>Now use it</h2><div class="deck">Prove it in the order given, and stop at the first one that surprises you.</div><p>Sign in once, then confirm it can read before it does anything else:</p><div class='cmd'>python facebook.py login<br>python facebook.py find-groups --query "your words here"</div><p>If that prints group names, the reading half works and the page has not moved under it. Only then look at joining, and look at the list it produced first: deciding which groups are worth being in stays a human decision and the job will not make it for you.</p><p>If it prints nothing, that is the page having changed rather than your machine being broken, and the probe command is what tells you which part moved.</p><h3>If you already had something like this</h3><p>A test rather than an instruction. Name the worst realistic outcome of a mistake on every platform you use, and then look at whether your limits reflect that ranking. Most people's limits reflect how much they want done.</p><hr class="rule"><h3>What this layer leaves unsolved</h3><p>Two platforms, both working, and you are still the one typing every command. Nothing happens unless you are sitting there, which means it happens on the days you remember and not on the days you are busy, and being busy is the reason you built any of this.</p><div class="box"><span class="mono">Next: Layer 5 &middot; When you are not there</span><p>A timetable, and the harder half: knowing whether anything actually happened while you were not watching.</p></div><h3>Words used in this guide</h3><table><tr><td class="k">Governor</td><td>The part that decides what is allowed to happen, before anything happens.</td></tr><tr><td class="k">Profile</td><td>One browser's own saved settings and sign-in. One per platform, never shared.</td></tr></table><div class="footer"><span class="mono">Layer 4 &middot; The Same Shape</span><span class="pgno">5</span><span class="mono">Outliers</span></div></div></body></html>
