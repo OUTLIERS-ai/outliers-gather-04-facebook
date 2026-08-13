@@ -174,6 +174,25 @@ def looks_signed_in(page):
 
 def sign_in():
     """Open a window and wait for you to sign in. No time limit, on purpose."""
+
+    # NOTHING OPENS UNLESS SOMEBODY IS THERE TO USE IT.
+    #
+    # This waits for you to press Enter. With no keyboard attached -- run from a
+    # timetable, a script, or an automated check -- that wait ends the instant it
+    # starts, so the window appears and vanishes before anybody could type into it.
+    # A browser flashing onto the screen and closing again interrupts whatever you
+    # were doing and achieves nothing, so the window is not opened at all.
+    if not sys.stdin or not sys.stdin.isatty():
+        print("")
+        print("  Signing in needs you at the keyboard, so nothing has been opened.")
+        print("")
+        print("  Run this yourself in a terminal:")
+        print("      python3 facebook.py login")
+        print("")
+        print("  It will open a window and wait for you, with no time limit.")
+        print("")
+        return 2
+
     print("")
     print("A browser window is opening. It is not your usual browser.")
     print("")
