@@ -31,6 +31,10 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+# What a member types to start Python. A Mac has `python3` and no plain `python`; Windows
+# keeps `python`, exactly as before.
+PY = "python3" if sys.platform == "darwin" else "python"
+
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import safe_write                                           # noqa: E402
@@ -110,7 +114,7 @@ def probe(url=None, wait_sec=120):
             page.goto(fb.HOME_URL, wait_until="domcontentloaded", timeout=60_000)
             walk.pause(1500, 2800)
             if not fb.looks_signed_in(page):
-                print("Not signed in. Run: python facebook.py login")
+                print("Not signed in. Run: %s facebook.py login" % PY)
                 return 3
 
             if url != fb.HOME_URL:

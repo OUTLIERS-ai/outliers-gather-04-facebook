@@ -26,6 +26,17 @@ import shutil
 import sys
 from pathlib import Path
 
+# What a member types to start Python. A Mac has `python3` and no plain `python`; Windows
+# keeps `python`, exactly as before.
+PY = "python3" if sys.platform == "darwin" else "python"
+
+# The 2 lines that get Playwright. On a Mac they go through `python3 -m`, because pip can put
+# its own `pip` and `playwright` commands in a folder Terminal does not search.
+if sys.platform == "darwin":
+    PLAYWRIGHT_STEPS = ["python3 -m pip install playwright", "python3 -m playwright install chromium"]
+else:
+    PLAYWRIGHT_STEPS = ["pip install playwright", "playwright install chromium"]
+
 LAYER = 4
 LAYER_NAME = "Facebook"
 SERIES = "Gather"
@@ -335,20 +346,20 @@ def main():
         say("  ONE MORE STEP before you can sign in. The browser needs Playwright,")
         say("  which is not installed yet. In this same terminal, run:")
         say()
-        say("      pip install playwright")
-        say("      playwright install chromium")
+        for step in PLAYWRIGHT_STEPS:
+            say("      " + step)
         say()
         say("  The second line downloads the browser itself, so it takes a minute.")
 
     say()
     say("  Now, in a terminal in that _engine folder:")
     say()
-    say("      python facebook.py status")
+    say("      %s facebook.py status" % PY)
     say()
     say("  Everything will say blocked. That is correct - it is how you know the")
     say("  doorman is standing there. Then sign in, once:")
     say()
-    say("      python facebook.py login")
+    say("      %s facebook.py login" % PY)
     say()
     return 0
 

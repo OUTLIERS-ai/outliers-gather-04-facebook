@@ -40,6 +40,17 @@ import sys
 from contextlib import contextmanager
 from pathlib import Path
 
+# What a member types to start Python. A Mac has `python3` and no plain `python`; Windows
+# keeps `python`, exactly as before.
+PY = "python3" if sys.platform == "darwin" else "python"
+
+# The 2 lines that get Playwright. On a Mac they go through `python3 -m`, because pip can put
+# its own `pip` and `playwright` commands in a folder Terminal does not search.
+if sys.platform == "darwin":
+    PLAYWRIGHT_STEPS = ["python3 -m pip install playwright", "python3 -m playwright install chromium"]
+else:
+    PLAYWRIGHT_STEPS = ["pip install playwright", "playwright install chromium"]
+
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import facebook_settings as fs                              # noqa: E402
@@ -83,9 +94,8 @@ def _playwright():
     except ImportError:
         raise SystemExit(
             "Playwright is not installed yet. In this terminal, run:\n"
-            "    pip install playwright\n"
-            "    playwright install chromium\n"
-            "then try again."
+            + "".join("    %s\n" % step for step in PLAYWRIGHT_STEPS)
+            + "then try again."
         )
     return sync_playwright
 
@@ -187,7 +197,7 @@ def sign_in():
         print("  Signing in needs you at the keyboard, so nothing has been opened.")
         print("")
         print("  Run this yourself in a terminal:")
-        print("      python3 facebook.py login")
+        print("      %s facebook.py login" % PY)
         print("")
         print("  It will open a window and wait for you, with no time limit.")
         print("")

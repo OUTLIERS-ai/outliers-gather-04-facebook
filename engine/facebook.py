@@ -29,6 +29,10 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+# What a member types to start Python. A Mac has `python3` and no plain `python`; Windows
+# keeps `python`, exactly as before.
+PY = "python3" if sys.platform == "darwin" else "python"
+
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import crm_paths                                            # noqa: E402
@@ -39,14 +43,14 @@ import facebook_limits as fbl                               # noqa: E402
 
 USAGE = """facebook - Layer 4, the same shape pointed at Facebook
 
-  python facebook.py login                          sign in by hand, once
-  python facebook.py status                         what is set, what is allowed now
-  python facebook.py probe [url]                    what a page is actually made of
-  python facebook.py find-groups [--query "..."]    read the group search, write a list
-  python facebook.py join [--commit]                ask to join the groups you picked
+  %(py)s facebook.py login                          sign in by hand, once
+  %(py)s facebook.py status                         what is set, what is allowed now
+  %(py)s facebook.py probe [url]                    what a page is actually made of
+  %(py)s facebook.py find-groups [--query "..."]    read the group search, write a list
+  %(py)s facebook.py join [--commit]                ask to join the groups you picked
 
 Run this from the _engine folder inside your CRM.
-"""
+""" % {"py": PY}
 
 
 def _rule():
@@ -84,7 +88,7 @@ def cmd_status():
     except Exception:                                       # noqa: BLE001
         saved = False
     print("  signed in           %s"
-          % ("yes" if saved else "not yet - run: python facebook.py login"))
+          % ("yes" if saved else "not yet - run: %s facebook.py login" % PY))
 
     terms = fs.search_terms()
     print("  search terms        %s"

@@ -35,6 +35,10 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+# What a member types to start Python. A Mac has `python3` and no plain `python`; Windows
+# keeps `python`, exactly as before.
+PY = "python3" if sys.platform == "darwin" else "python"
+
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import safe_write                                           # noqa: E402
@@ -152,7 +156,7 @@ def _no_list_message():
     print("")
     print("Run this first, then read what it found:")
     print("")
-    print("    python facebook.py find-groups")
+    print("    %s facebook.py find-groups" % PY)
     print("")
     print("Then copy the groups you actually want into")
     print("  %s" % list_path())
@@ -209,7 +213,7 @@ def join(commit=False, most=3, wait_sec=300):
             page.goto(fb.HOME_URL, wait_until="domcontentloaded", timeout=60_000)
             walk.pause(1500, 2800)
             if not fb.looks_signed_in(page):
-                print("Not signed in. Run: python facebook.py login")
+                print("Not signed in. Run: %s facebook.py login" % PY)
                 return 3
 
             for group in waiting:
@@ -258,7 +262,7 @@ def join(commit=False, most=3, wait_sec=300):
                 if control is None:
                     print("  no Join control found on %s" % name)
                     print("    either the group is closed to new members, or Facebook has moved")
-                    print("    something. To see which: python facebook.py probe %s" % group["url"])
+                    print("    something. To see which: %s facebook.py probe %s" % (PY, group["url"]))
                     continue
 
                 if not act:
@@ -309,5 +313,5 @@ def join(commit=False, most=3, wait_sec=300):
     else:
         print("Plan only. Nothing was clicked. %d waiting, %d need you by hand."
               % (left, manual))
-        print("When the plan reads correctly: python facebook.py join --commit")
+        print("When the plan reads correctly: %s facebook.py join --commit" % PY)
     return 0
