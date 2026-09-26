@@ -44,6 +44,10 @@ from pathlib import Path
 # keeps `python`, exactly as before.
 PY = "python3" if sys.platform == "darwin" else "python"
 
+# The key a member presses. A Mac keyboard's key is Return; Windows keeps Enter, exactly as before
+# (Mac build plan V3, wave s2: the Session 7 ruling on the words installers print).
+KEY = "Return" if sys.platform == "darwin" else "Enter"
+
 # The 2 lines that get Playwright. On a Mac they go through `python3 -m`, because pip can put
 # its own `pip` and `playwright` commands in a folder Terminal does not search.
 if sys.platform == "darwin":
@@ -209,7 +213,7 @@ def sign_in():
     print("  1. Sign in to Facebook as yourself, exactly as you normally would.")
     print("  2. Include any code sent to your phone, if you use one.")
     print("  3. Keep going until you reach your normal home feed.")
-    print("  4. Then come back here and press Enter.")
+    print("  4. Then come back here and press %s." % KEY)
     print("")
     print("There is no time limit on this. Take as long as you need - if you have")
     print("to find your phone, go and find it. Nothing is counting.")
@@ -221,7 +225,7 @@ def sign_in():
         except Exception:                                   # noqa: BLE001
             pass                                            # a sign-in wall is a fine place to land
         try:
-            input("  Press Enter once you are signed in and can see your feed... ")
+            input("  Press %s once you are signed in and can see your feed... " % KEY)
         except (EOFError, KeyboardInterrupt):
             print("\n  Stopped. Nothing was saved.")
             return 1
